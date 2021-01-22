@@ -1,0 +1,28 @@
+{
+  "name": "itch-scraper",
+  "version": "0.1.0",
+  "description": "Itch scraper is a scraping tool to get data from itch.io pages.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon ./index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DeathVenom54/itch-scraper.git"
+  },
+  "keywords": [
+    "itch",
+    "itch.io",
+    "scraper"
+  ],
+  "author": "https://github.com/DeathVenom54/",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/DeathVenom54/itch-scraper/issues"
+  },
+  "homepage": "https://github.com/DeathVenom54/itch-scraper#readme",
+  "dependencies": {
+    "jsdom": "^16.4.0"
+  }
+}
