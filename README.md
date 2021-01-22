@@ -1,6 +1,7 @@
 # Itch Scraper
 
-A scraping tool for extracting informaion about itch.io games
+A scraping tool for extracting information about itch.io games
+NOTE: This module is in an early state of development and doesn't contain all the planned functionality at this time. It might also contain some bugs.
 
 ### Installation
 
@@ -107,3 +108,8 @@ let link = 'https://danqzq.itch.io';
 const user = getAuthorUser(link);
 console.log(`The username is ${user}`); //The username is danialxd
 ```
+
+### Bugs and Features
+
+If you encounter a bug, feel free to open a new issue at https://github.com/DeathVenom54/itch-scraper/issues. Please give an exxplanation of the bug along with your code and error(s), if any.
+If you also want to suggest any features/changes, you can also open an issue for it.
