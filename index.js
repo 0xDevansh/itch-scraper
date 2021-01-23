@@ -3,9 +3,17 @@ const {
   getAuthorName,
   getAuthorUrl,
   getAuthorUser,
+  getAuthorBio,
+  getAuthorGames,
+  getAuthorSocialLinks,
   getAuthor,
 } = require('./src/author.js');
-const { getGameTitle, getGameScreenshots, getGame } = require('./src/game.js');
+const {
+  getGameTitle,
+  getGameDescription,
+  getGameScreenshots,
+  getGame,
+} = require('./src/game.js');
 
 const getDetails = async link => {
   const author = await getAuthor(link);
@@ -15,9 +23,14 @@ const getDetails = async link => {
 
 module.exports = {
   getDetails,
+  getAuthor,
   getAuthorName,
   getAuthorUrl,
   getAuthorUser,
+  getAuthorBio,
+  getAuthorGames,
+  getAuthorSocialLinks,
   getGameTitle,
+  getGameDescription,
   getGameScreenshots,
 };

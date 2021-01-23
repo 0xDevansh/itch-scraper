@@ -1,11 +1,11 @@
 {
   "name": "itch-scraper",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Itch scraper is a scraping tool to get data from itch.io pages.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon ./index.js"
+    "dev": "nodemon ./testing.js"
   },
   "repository": {
     "type": "git",
