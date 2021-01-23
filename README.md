@@ -26,10 +26,15 @@ Use getDetails("itch.io_link_here") to fetch basic details of a game.
 const scraper = require('itch-scraper');
 
 let link = 'https://danqzq.itch.io/hellgrinder';
-scraper.getDetails(link).then(game => {
-  //do something
-  console.log(game);
-});
+scraper.getDetails(link)
+  .then(game => {
+    //do something
+    console.log(game);
+  })
+  .catch(err => {
+    console.log(err);
+    //do something
+  });
 ```
 
 ```js
@@ -60,15 +65,22 @@ You can also import individual methods, if you need only specific data.
 const { getGameTitle } = require('itch-scraper');
 
 let link = 'https://danqzq.itch.io/hellgrinder';
-getGameTitle(link).then(title => {
-  //do something
-  console.log(`The title of the game is ${title}`);
-});
+getGameTitle(link)
+  .then(title => {
+    //do something
+    console.log(`The title of the game is ${title}`);
+  })
+  .catch(err => {
+    console.log(err);
+    //do something
+  });
 ```
 
 ```
 The title of the game is HELLGRINDER
 ```
+
+**All methods must be enclosed in a try-catch block. You can also use .catch() at the end of a method if you're not using await**
 
 ### Methods
 
