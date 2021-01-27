@@ -1,6 +1,6 @@
 {
   "name": "itch-scraper",
-  "version": "1.0.0",
+  "version": "0.3.0",
   "description": "Itch scraper is a scraping tool to get data from itch.io pages.",
   "main": "index.js",
   "scripts": {
