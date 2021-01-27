@@ -1,4 +1,5 @@
-https://img.shields.io/static/v1?label=npm&message=itch-scraper&color=brightgreen&url=https://www.npmjs.com/package/itch-scraper
+[![npm](https://img.shields.io/npm/v/itch-scraper)](https://www.npmjs.com/package/itch-scraper)
+![NPM Downloads](https://img.shields.io/npm/dw/itch-scraper)
 
 # Installation
 
