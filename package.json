@@ -1,11 +1,10 @@
 {
   "name": "itch-scraper",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "description": "Itch scraper is a scraping tool to get data from itch.io pages.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon ./testing.js"
+    "lint": "npx eslint --fix ."
   },
   "repository": {
     "type": "git",
@@ -24,5 +23,10 @@
   "homepage": "https://github.com/DeathVenom54/itch-scraper#readme",
   "dependencies": {
     "jsdom": "^16.4.0"
+  },
+  "devDependencies": {
+    "eslint": "^7.18.0",
+    "eslint-config-prettier": "^7.2.0",
+    "prettier": "2.2.1"
   }
 }

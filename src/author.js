@@ -37,7 +37,7 @@ const getAuthorGames = async link => {
   const dom = await JSDOM.fromURL(authorLink);
   const { document } = dom.window;
   const gameDoms = document.querySelectorAll('div.game_cell.has_cover > a');
-  let games = [];
+  const games = [];
   gameDoms.forEach(game => games.push(game.getAttribute('href')));
   return games;
 };
@@ -49,7 +49,7 @@ const getAuthorSocialLinks = async link => {
   const linkDoms = document.querySelectorAll(
     'div.user_links > span.link_group > a'
   );
-  let socialLinks = [];
+  const socialLinks = [];
   linkDoms.forEach(link => socialLinks.push(link.getAttribute('href')));
   return socialLinks;
 };

@@ -3,39 +3,39 @@ const checkLink = require('./checkLink.js');
 
 const getGameTitle = async link => {
   const linkType = checkLink(link);
-  if (linkType === 0) {
-    const dom = await JSDOM.fromURL(link);
-    const { document } = dom.window;
-    const title = document.querySelector('div.header > h1.game_title')
-      .textContent;
-    return title;
-  } else throw Error('The provided link is not a valid game url');
+  if (linkType !== 0) throw Error('Link is not a valid game url');
+  const dom = await JSDOM.fromURL(link);
+  const { document } = dom.window;
+  const title = document.querySelector('div.header > h1.game_title')
+    .textContent;
+  return title;
 };
 
 const getGameScreenshots = async link => {
   const linkType = checkLink(link);
-  if (linkType === 0) {
-    const dom = await JSDOM.fromURL(link);
-    const { document } = dom.window;
-    const screenshotDom = document.querySelectorAll('.screenshot_list a');
-    let screenshots = [];
-    screenshotDom.forEach(ss => screenshots.push(ss.getAttribute('href')));
-    return screenshots;
-  } else throw Error('The provided link is not a valid game url');
+  if (linkType !== 0) throw Error('Link is not a valid game url');
+
+  const dom = await JSDOM.fromURL(link);
+  const { document } = dom.window;
+  const screenshotDom = document.querySelectorAll('.screenshot_list a');
+
+  const screenshots = [];
+  screenshotDom.forEach(ss => screenshots.push(ss.getAttribute('href')));
+  return screenshots;
 };
 
 const getGameDescription = async link => {
   const linkType = checkLink(link);
-  if (linkType === 0) {
-    const dom = await JSDOM.fromURL(link);
-    const { document } = dom.window;
-    const desc = document.querySelector('div.formatted_description')
-      .textContent;
-    return desc;
-  } else throw Error('The provided link is not a valid game url');
+  if (linkType !== 0) throw Error('Link is not a valid game url');
+
+  const dom = await JSDOM.fromURL(link);
+  const { document } = dom.window;
+  const desc = document.querySelector('div.formatted_description').textContent;
+
+  return desc;
 };
 
-const getGame = async link => {
+const getGameDetails = async link => {
   const title = await getGameTitle(link);
   const screenshots = await getGameScreenshots(link);
   const description = await getGameDescription(link);
@@ -46,5 +46,5 @@ module.exports = {
   getGameTitle,
   getGameDescription,
   getGameScreenshots,
-  getGame,
+  getGameDetails,
 };

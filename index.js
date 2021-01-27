@@ -1,4 +1,3 @@
-const { JSDOM } = require('jsdom');
 const {
   getAuthorName,
   getAuthorUrl,
@@ -12,17 +11,22 @@ const {
   getGameTitle,
   getGameDescription,
   getGameScreenshots,
-  getGame,
+  getGameDetails,
 } = require('./src/game.js');
 
-const getDetails = async link => {
+const getGame = async link => {
   const author = await getAuthor(link);
-  const game = await getGame(link);
+  const game = await getGameDetails(link);
   return { ...game, author };
 };
 
 module.exports = {
-  getDetails,
+  // game methods
+  getGame,
+  getGameTitle,
+  getGameDescription,
+  getGameScreenshots,
+  // author methods
   getAuthor,
   getAuthorName,
   getAuthorUrl,
@@ -30,7 +34,4 @@ module.exports = {
   getAuthorBio,
   getAuthorGames,
   getAuthorSocialLinks,
-  getGameTitle,
-  getGameDescription,
-  getGameScreenshots,
 };

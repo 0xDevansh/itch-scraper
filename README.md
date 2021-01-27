@@ -1,159 +1,87 @@
-# Itch Scraper
+https://img.shields.io/static/v1?label=npm&message=itch-scraper&color=brightgreen&url=https://www.npmjs.com/package/itch-scraper
 
-A scraping tool for extracting information about itch.io games
+# Installation
 
-NOTE: This module is in an early state of development and doesn't contain all the planned functionality at this time. It might also contain some bugs.
-
-### Installation
-
-Using npm:
+npm:
 
 ```
-$ npm install --save itch-scraper
+npm install --save itch-scraper
 ```
 
-In node.js:
+You don't need the --save flag for npm versions 5.0.0 and above
+
+yarn:
+
+```
+yarn add itch-scraper
+```
+
+---
+
+Import it in your project as
 
 ```js
 const scraper = require('itch-scraper');
 ```
 
-### Usage
+# Usage
 
-Use getDetails("itch.io_link_here") to fetch basic details of a game.
+> Every method must be surronded by a try-catch, or ended with .catch() on async methods
 
 ```js
 const scraper = require('itch-scraper');
 
-let link = 'https://danqzq.itch.io/hellgrinder';
-scraper.getDetails(link)
-  .then(game => {
-    //do something
-    console.log(game);
-  })
-  .catch(err => {
+let scrape = async url => {
+  try {
+    /*
+    Game methods
+    These only work on itch.io game links
+    All methods are async
+    */
+    let game = await scraper.getGame(url);                                 // Get all available game details
+    let gameTitle = await scraper.getGameTitle(url);                       // Get the title of the game
+    let gameDescription = await scraper.getGameDescription(url);           // Get the game description
+    let gameScreenshots = await scraper.getGameScreenshots(url);           // Get the urls of screenshots uploaded by the author. Empty array if none
+    /*
+    Author methods
+    These work on both itch.io game and user links
+    All methods except getAuthorUrl() or getAuthorUser() are async
+    */
+    let author = await scraper.getAuthor(url);                             // Get all available author details
+    let authorName = await scraper.getAuthorName(url);                     // Get the name of the author. Might be different from their username
+    let authorUrl = scraper.getAuthorUrl(url);                             // Get the url of author's page
+    let authorUser = scraper.getAuthorUser(url);                           // Get the unique username of author
+    let authorBio = await scraper.getAuthorBio(url);                       // Get the bio/description/intro of the author
+    let authorGames = await scraper.getAuthorGames(url);                   // Get the urls of all games uploaded by the author
+    let authorSocialLinks = await scraper.getAuthorSocialLinks(url);       // Get the social media links posted by the author on their homepage
+  } catch (err) {
     console.log(err);
-    //do something
-  });
-```
-
-```js
-{
-  title: 'HELLGRINDER',
-  screenshots: [
-    'https://img.itch.zone/aW1hZ2UvNzM2ODAwLzQxMDU2MzYucG5n/original/tueH09.png',
-    'https://img.itch.zone/aW1hZ2UvNzM2ODAwLzQxMDU2MzMucG5n/original/WkEdzc.png',
-    'https://img.itch.zone/aW1hZ2UvNzM2ODAwLzQxMDU2MzIucG5n/original/q51n90.png',
-    'https://img.itch.zone/aW1hZ2UvNzM2ODAwLzQxMDU2MzUucG5n/original/QUjbTh.png',
-    'https://img.itch.zone/aW1hZ2UvNzM2ODAwLzQxMDU2MzcucG5n/original/HLM6RP.png',
-    'https://img.itch.zone/aW1hZ2UvNzM2ODAwLzQxMDU2MzQucG5n/original/zgyayg.png',
-    'https://img.itch.zone/aW1hZ2UvNzM2ODAwLzQxMDU2MzgucG5n/original/Cea7Et.png'
-  ],
-  author: {
-    url: 'https://danqzq.itch.io',
-    user: 'danqzq',
-    name: 'Danial Jumagaliyev'
   }
+};
+```
+
+Methods can also be imported and used singularly
+
+```js
+//To get the game and author name
+const { getGameTitle, getAuthorName } = require('itch-scraper');
+
+const getGameAndAuthor = async link => {
+  const gameTitle = await getGameTitle(link);
+  const author = await getAuthorName(link);
+  console.log(`Game:${gameTitle} by ${author}`);
 }
+
+getGameAndAuthor('https://danqzq.itch.io/hellgrinder');
 ```
 
-(Note that getDetails is an async function and must be used with .then() or await)
+`Game:HELLGRINDER by Danial Jumagaliyev`
 
-You can also import individual methods, if you need only specific data.
+# Bugs and Improvements
 
-```js
-const { getGameTitle } = require('itch-scraper');
+If you encounter any kind of bug, feel free to [open an issue](https://github.com/DeathVenom54/itch-scraper/issues) or post about it in the [Discord server](https://discord.gg/ZRBxHc2SDb). Bug reports should be described properly and accompanied with the error message(s) if any, and the reproduction steps/the code which triggered the problem.
 
-let link = 'https://danqzq.itch.io/hellgrinder';
-getGameTitle(link)
-  .then(title => {
-    //do something
-    console.log(`The title of the game is ${title}`);
-  })
-  .catch(err => {
-    console.log(err);
-    //do something
-  });
-```
+# Versions
 
-```
-The title of the game is HELLGRINDER
-```
+You can see the version history and changelog [here](https://github.com/DeathVenom54/itch-scraper/releases)
 
-**All methods must be enclosed in a try-catch block. You can also use .catch() at the end of a method if you're not using await**
-
-### Methods
-
-#### Game Methods
-
-These methods only work on an itch.io game link.
-
-**getDetails("link_here")\***
-
-Gets the details of a game.
-
-**getGameTitle("link_here")\***
-
-Gets the title of the game.
-
-**getGameDescription("link_here")\***
-
-Gets the description of the game. There might be some unexpected result when getting the description of custom gamepages.
-
-**getGameScreenshots("link_here")\***
-
-Gets an array containing the url's of the screenshots of the game. Returns empty array if the author didn't upload any screenshots.
-
-#### Author methods
-
-These methods can work with both itch.io game links and user links.
-
-**getAuthor("link_here")\***
-
-Gets all the available properties of an author.
-
-**getAuthorName("link_here")\***
-
-Gets the name of the author.
-
-**getAuthorUser("link_here")**
-
-Gets the itch username of the author. The username might differ from the author name.
-
-**getAuthorUrl("link_here")**
-
-Gets the url of the author's itch.io page.
-
-**getAuthorBio("link_here")\***
-
-Gets the bio/profile description of the author's itch.io page.
-
-**getAuthorGames("link_here")\***
-
-Gets an array of links to the public games uploaded by the user. Empty is there are no public games uploaded.
-
-**getAuthorSocialLinks("link_here")\***
-
-Gets an array of social media links on the author's page. Empty if there are no links attached.
-
-**\*** This function is async and should be only used with .then() or await.
-
-Note: You can also pass in the user's page url as the link for getAuthorName() and getAuthorUser().
-
-```js
-const { getAuthorName } = require('itch-scraper');
-
-let link = 'https://danqzq.itch.io';
-const user = getAuthorUser(link);
-console.log(`The username is ${user}`); //The username is danialxd
-```
-
-### Bugs and Features
-
-If you encounter a bug, feel free to open a new issue at https://github.com/DeathVenom54/itch-scraper/issues. Please give an exxplanation of the bug along with your code and error(s), if any.
-
-If you also want to suggest any features/changes, you can also open an issue for it at https://github.com/DeathVenom54/itch-scraper/issues
-
-### Versions
-
-You can read about older versions and changes at https://github.com/DeathVenom54/itch-scraper/blob/main/CHANGELOG.md
