@@ -5,7 +5,8 @@
   "main": "lib/index.js",
   "scripts": {
     "test": "jest",
-    "ts":"tsc -w"
+    "compile":"tsc",
+    "publish":"npm publish --access public"
   },
   "repository": {
     "type": "git",
