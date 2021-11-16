@@ -7,7 +7,8 @@
   "scripts": {
     "lint": "npx eslint --fix .",
     "dev": "tsc -W",
-    "build": "tsc"
+    "build": "tsc",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -30,12 +31,15 @@
   },
   "devDependencies": {
     "@types/cheerio": "^0.22.30",
+    "@types/jest": "^27.0.2",
     "@typescript-eslint/eslint-plugin": "^5.4.0",
     "@typescript-eslint/parser": "^5.4.0",
     "eslint": "^8.2.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
+    "jest": "^27.3.1",
     "prettier": "^2.4.1",
+    "ts-jest": "^27.0.7",
     "typescript": "^4.4.4"
   }
 }
