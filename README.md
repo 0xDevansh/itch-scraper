@@ -119,7 +119,7 @@ getGameAndAuthor('https://danqzq.itch.io/solo-inferno');
 
 ## Bugs and Improvements
 
-If you encounter any kind of bug, feel free to [open an issue](https://github.com/DeathVenom54/itch-scraper/issues) or post about it in the [Discord server](https://discord.gg/ZRBxHc2SDb). Bug reports should be described properly and accompanied with the error message(s) if any, and the reproduction steps/the code which triggered the problem.
+If you encounter any kind of bug, feel free to [open an issue](https://github.com/DeathVenom54/itch-scraper/issues) or post about it in my [Discord Server](https://discord.gg/qJnrRvt7wW). Bug reports should be described properly and accompanied with the error message(s) if any, and the reproduction steps/the code which triggered the problem.
 
 ## Versions
 
