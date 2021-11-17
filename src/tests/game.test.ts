@@ -2,7 +2,6 @@ import { getGameScreenshots, getGameTitle } from '../game';
 import { GameInput } from '../helpers/inputs';
 
 const url = 'https://danqzq.itch.io/solo-inferno';
-const invalidUrl = 'https://danqzq.itch/solo-inferno';
 const gameInput = {
   authorName: 'danqzq',
   title: 'solo-inferno',
@@ -17,18 +16,6 @@ describe('getGameTitle', () => {
 
     expect(titleWithUrl).toBe('Solo Inferno');
     expect(titleWithInput).toBe('Solo Inferno');
-  });
-
-  test('should throw error', async () => {
-    try {
-      await getGameTitle(invalidUrl);
-    } catch (err) {
-      const errorFunc = () => {
-        throw err;
-      };
-
-      expect(errorFunc).toThrowError(new Error('The url or author/game name provided are malformed'));
-    }
   });
 });
 
@@ -45,17 +32,5 @@ describe('getGameScreenshots', () => {
 
     expect(screenshotsByUrl).toStrictEqual(returned);
     expect(screenshotsByInput).toStrictEqual(returned);
-  });
-
-  test('should throw error', async () => {
-    try {
-      await getGameScreenshots(invalidUrl);
-    } catch (err) {
-      const errorFunc = () => {
-        throw err;
-      };
-
-      expect(errorFunc).toThrowError(new Error('The url or author/game name provided are malformed'));
-    }
   });
 });

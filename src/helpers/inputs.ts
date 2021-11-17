@@ -6,3 +6,9 @@ export type GameInput = {
 export type AuthorInput = {
   name: string;
 };
+
+export type Game = {
+  title: string;
+  description: string;
+  screenshots: string[];
+};
