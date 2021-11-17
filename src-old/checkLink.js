@@ -1,9 +1,11 @@
 const authorRegex = /^https:\/\/([a-zA-Z0-9-\._~:\/\?#\[\]@!\$&'\(\)\*\+,;=]+).itch\.io([\/]?)$/;
-const gameRegex = /^https:\/\/([a-zA-Z0-9-\._~:\/\?#\[\]@!\$&'\(\)\*\+,;=]+).itch\.io\/([a-zA-Z0-9-\._~:\/\?#\[\]@!\$&'\(\)\*\+,;=]+)$/;
+const gameRegex =
+  /^https:\/\/([a-zA-Z0-9-\._~:\/\?#\[\]@!\$&'\(\)\*\+,;=]+).itch\.io\/([a-zA-Z0-9-\._~:\/\?#\[\]@!\$&'\(\)\*\+,;=]+)$/;
 const jamPageRegex = /^https:\/\/([www\.]?)itch\.io\/jam\/([a-zA-Z0-9-\._~:\/\?#\[\]@!\$&'\(\)\*\+,;=]+)([\/]?)$/;
-const jamEntriesRegex = /^https:\/\/([www\.]?)itch\.io\/jam\/([a-zA-Z0-9-\._~:\/\?#\[\]@!\$&'\(\)\*\+,;=]+)\/entries([\/]?)$/;
+const jamEntriesRegex =
+  /^https:\/\/([www\.]?)itch\.io\/jam\/([a-zA-Z0-9-\._~:\/\?#\[\]@!\$&'\(\)\*\+,;=]+)\/entries([\/]?)$/;
 
-const checkLink = link => {
+const checkLink = (link) => {
   // check through all regexes
   if (gameRegex.test(link)) return 0;
   else if (authorRegex.test(link)) return 1;
